@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:S3Eksamen.Views"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:S3Eksamen.Views" xmlns:models="clr-namespace:S3Eksamen.Models"
              d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{StaticResource sharedLoginViewmodel}">
+             DataContext="{StaticResource sharedLoginView}">
     <Canvas Background="white">
         <TextBlock Text="Username" Canvas.Left="250" Canvas.Top="162"/>
-        <TextBox Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
+        <TextBox Text="{Binding User.UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>
-        <TextBox Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <TextBox Text="{Binding User.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <Button Content="Login" Command="{Binding LoginCommand, Source={StaticResource sharedLoginView}}" Canvas.Left="383" Canvas.Top="326"/>
     </Canvas>
 </UserControl>

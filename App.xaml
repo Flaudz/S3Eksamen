@@ -5,6 +5,6 @@
              xmlns:viewmodel="clr-namespace:S3Eksamen.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <viewmodel:LoginViewModel x:Key="sharedLoginViewmodel" />
+        <viewmodel:LoginViewModel x:Key="sharedLoginView" />
     </Application.Resources>
 </Application>
