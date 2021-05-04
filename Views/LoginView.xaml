@@ -9,7 +9,7 @@
              DataContext="{StaticResource sharedLoginViewmodel}">
     <Canvas Background="white">
         <TextBlock Text="Username" Canvas.Left="250" Canvas.Top="162"/>
-        <TextBox Text="{Binding Path=}" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
+        <TextBox Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>
         <TextBox Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
     </Canvas>
