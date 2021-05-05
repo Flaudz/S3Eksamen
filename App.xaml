@@ -6,5 +6,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <viewmodel:LoginViewModel x:Key="sharedLoginViewmodel" />
+        <viewmodel:RegisterViewModel x:Key="sharedRegisterViewmodel"/>
     </Application.Resources>
 </Application>

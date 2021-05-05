@@ -13,6 +13,10 @@ namespace S3Eksamen.ViewModels
 {
     public class LoginViewModel
     {
+        // Change to Register Canvas
+        private ChangeToRegisterCommand changeToRegisterCommand;
+        public ChangeToRegisterCommand ChangeToRegisterCommand { get => changeToRegisterCommand; set => changeToRegisterCommand = value; }
+
         // WelcomeCanvas
         private VisibilityModel welcomeVisibility = new VisibilityModel();
         public VisibilityModel WelcomeVisibility { get => welcomeVisibility; set => welcomeVisibility = value; }
@@ -32,6 +36,7 @@ namespace S3Eksamen.ViewModels
         public LoginViewModel()
         {
             this.LoginCommand = new LoginCommand(this);
+            this.ChangeToRegisterCommand = new ChangeToRegisterCommand(this);
 
             WelcomeVisibility.Visibility = "Hidden";
             LoginVisibility.Visibility = "Visible";
@@ -67,6 +72,13 @@ namespace S3Eksamen.ViewModels
         public void CheckUser()
         {
             Debug.WriteLine(User.UserName);
+        }
+
+        public void ChangeToRegister()
+        {
+            loginVisibility.Visibility = "Hidden";
+            RegisterViewModel RegisterView = (RegisterViewModel)App.Current.Resources["sharedRegisterViewmodel"];
+            RegisterView.RegisterVisibility.Visibility = "Visible";
         }
     }
 }

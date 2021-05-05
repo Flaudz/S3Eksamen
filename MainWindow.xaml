@@ -11,6 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <views:RegisterView Grid.Column="0" />
         <views:WelcomeView Grid.Column="0"/>
         <views:LoginView Grid.Column="0"/>
     </Grid>
