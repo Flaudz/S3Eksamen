@@ -18,21 +18,12 @@ namespace S3Eksamen.ViewModels.Commands
         }
         public bool CanExecute(object parameter)
         {
-            if(parameter != null)
-            {
-                var s = parameter as String;
-                if (String.IsNullOrEmpty(s))
-                {
-                    return false;
-                }
-                return true;
-            }
             return true;
         }
 
         public void Execute(object parameter)
         {
-            this.viewModel.Login(parameter as String);
+            this.viewModel.Login(parameter);
         }
     }
 }
