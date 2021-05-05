@@ -9,8 +9,9 @@
              DataContext="{StaticResource sharedLoginViewmodel}">
     <Canvas Background="white">
         <TextBlock Text="Username" Canvas.Left="250" Canvas.Top="162"/>
-        <TextBox Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
+        <TextBox x:Name="username" Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>
-        <TextBox Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <TextBox x:Name="pass" Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <Button IsEnabled="True" Content="Login" Command="{Binding LoginCommand, Source={StaticResource sharedLoginViewmodel}}" CommandParameter="{Binding Text, ElementName=username}" Canvas.Left="383" Canvas.Top="327"/>
     </Canvas>
 </UserControl>
