@@ -26,8 +26,8 @@ namespace S3Eksamen.ViewModels
         public void Register(object paramater)
         {
             object[] data = paramater as object[];
-            string Username = data[0] as String;
-            string Password = data[1] as String;
+            string Username = data[0] as string;
+            string Password = data[1] as string;
             UserModel registerUser = new UserModel{ UserName = Username, Password = Password};
             registerUser.Register();
         }
