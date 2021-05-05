@@ -31,13 +31,29 @@ namespace S3Eksamen.ViewModels
 
         public void Login(object paramater)
         {
-            var data = paramater as object[];
-            var Username = data[0] as String;
-            var Password = data[1] as String;
-            // Får context som er database connection som jeg skal bruge til at logge ind
-            using var context = new LoginContext();
+            // Her får jeg både brugernavn og adgangskode fra button binding
+            object[] data = paramater as object[];
+            string Username = data[0] as String;
+            string Password = data[1] as String;
 
-            Debug.WriteLine(Username);
+            // Får context som er database connection som jeg skal bruge til at logge ind
+            using LoginContext context = new LoginContext();
+            // Her får jeg alle Brugere fra databasen og sætter ind i en liste
+            var allUsers = context.Users.Where(s => s.UserName == Username && s.Password == Password).ToList();
+            if(allUsers.Count != 0)
+            {
+                foreach (UserModel model in allUsers)
+                {
+                    Debug.WriteLine(model.UserName);
+
+                }
+            }
+            else
+            {
+                Debug.WriteLine("Det var ikke en bruger som hed dette");
+            }
+            
+
         }
     }
 }
