@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>209</x>
+      <y>0</y>
+      <w>264</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>UserModel : INotifyPropertyChanged
+-
+-id : int
+-userName : string
+-password : string
+-
+-RaisePropertyChanged(string) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>187</y>
+      <w>253</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>LoginViewModel
+-
+-welcomeVisibility : VisibilityModel
+-loginVisibility : VisibilityModel
+-loginCommand : LoginCommand
+-user : UserModel
+-
++Login(paramater : object) : void
++CheckUser() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>781</x>
+      <y>451</y>
+      <w>814</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>LoginView
+-
+-DataContext : {StaticResource sharedLoginViewmodel}
+-LoginConverter : local:LoginConverter
+-
+-Canvas(white : Background, {Binding LoginVisibility.Visibility} : Visibility)
+-TextBlock(Username : Text)
+-username("" : Text, 30 : FontSize) : TextBox
+-TextBlock(Password : Text)
+-pass(Password : Text, 30 : FontSize) : TextBox
+-Button({Binding LoginCommand, Source={StaticResource sharedLoginViewmodel}} : Command, 2 Params : Content)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>0</y>
+      <w>286</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>VisibilityModel : INotifyPropertyChanged
+-
+-visibility : string
+-
+-RaisePropertyChanged(string) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>517</x>
+      <y>198</y>
+      <w>319</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>LoginCommand : ICommand
+-
+-viewModel : LoginViewModel
++CanExecuteChanged : event EventHandler
+-
++CanExecute(parameter : object) : bool
++Execute(parameter : object) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>935</x>
+      <y>198</y>
+      <w>693</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>LoginCoverter : IMultiValueConverter
+-
+-
++Convert(values : object[], targetType : Type, parameter : object, culture : CultureInfo) : object
++ConvertBack(value : object, targerTypes : Type[], parameter : object, culture : CultureInfo) : object[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>440</y>
+      <w>539</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>WelcomeView
+-
+-DataContext : {StaticResource sharedLoginViewmodel}
+-
+-Canvas(White : Background, {Binding WelcomeVisibility.Visibility} : Visibility)
+-TextBlock(50, FontSize, {Binding User.UserName} : Text)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>286</x>
+      <y>99</y>
+      <w>33</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>418</x>
+      <y>242</y>
+      <w>121</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>418</x>
+      <y>55</y>
+      <w>154</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>120.0;10.0;70.0;10.0;70.0;140.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>275</x>
+      <y>319</y>
+      <w>704</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;620.0;70.0;620.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>209</x>
+      <y>319</y>
+      <w>33</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1276</x>
+      <y>264</y>
+      <w>33</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>

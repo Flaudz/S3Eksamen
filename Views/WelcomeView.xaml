@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{StaticResource sharedLoginViewmodel}">
-    <Canvas Background="White" Visibility="Visible">
+    <Canvas Background="White" Visibility="{Binding WelcomeVisibility.Visibility}">
         <TextBlock FontSize="50" Text="{Binding User.UserName}" Canvas.Left="342" Canvas.Top="192"/>
     </Canvas>
 </UserControl>
