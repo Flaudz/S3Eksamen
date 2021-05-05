@@ -20,7 +20,7 @@ namespace S3Eksamen.ViewModels
         public LoginCommand LoginCommand { get => loginCommand; set => loginCommand = value; }
 
         // User
-        private UserModel user;
+        private UserModel user = new UserModel();
         public UserModel User { get => user; set => user = value; }
 
         public LoginViewModel()
@@ -44,16 +44,21 @@ namespace S3Eksamen.ViewModels
             {
                 foreach (UserModel model in allUsers)
                 {
-                    Debug.WriteLine(model.UserName);
-
+                    User.UserName = model.UserName;
+                    User.Password = model.Password;
+                    User.Id = model.Id;
                 }
+                CheckUser();
             }
             else
             {
-                Debug.WriteLine("Det var ikke en bruger som hed dette");
+                Debug.WriteLine("Der var ikke en bruger som hed dette");
             }
-            
+        }
 
+        public void CheckUser()
+        {
+            Debug.WriteLine(User.UserName);
         }
     }
 }
