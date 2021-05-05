@@ -3,14 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:S3Eksamen.Views"
+             xmlns:local="clr-namespace:S3Eksamen.ViewModels.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{StaticResource sharedLoginViewmodel}">
+    <UserControl.Resources>
+        <local:LoginConverter x:Key="LoginConverter"></local:LoginConverter>
+    </UserControl.Resources>
     <Canvas Background="white">
         <TextBlock Text="Username" Canvas.Left="250" Canvas.Top="162"/>
-        <TextBox Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
+        <TextBox x:Name="username" Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>
-        <TextBox Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <TextBox x:Name="pass" Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
+        <Button Command="{Binding LoginCommand, Source={StaticResource sharedLoginViewmodel}}" Content="2 Paramas" Canvas.Left="383" Canvas.Top="352">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource LoginConverter}">
+                    <Binding ElementName="username" Path="Text"/>
+                    <Binding ElementName="pass" Path="Text"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
     </Canvas>
 </UserControl>
