@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <local:LoginConverter x:Key="LoginConverter"></local:LoginConverter>
     </UserControl.Resources>
-    <Canvas Background="white">
+    <Canvas Background="white" Visibility="{Binding LoginVisibility.Visibility}">
         <TextBlock Text="Username" Canvas.Left="250" Canvas.Top="162"/>
         <TextBox x:Name="username" Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>

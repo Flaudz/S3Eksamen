@@ -13,7 +13,13 @@ namespace S3Eksamen.ViewModels
 {
     public class LoginViewModel
     {
-        // LoginConverter
+        // WelcomeCanvas
+        private VisibilityModel welcomeVisibility = new VisibilityModel();
+        public VisibilityModel WelcomeVisibility { get => welcomeVisibility; set => welcomeVisibility = value; }
+
+        // LoginCanvas
+        private VisibilityModel loginVisibility = new VisibilityModel();
+        public VisibilityModel LoginVisibility { get => loginVisibility; set => loginVisibility = value; }
 
         // LoginCommand
         private LoginCommand loginCommand;
@@ -26,6 +32,9 @@ namespace S3Eksamen.ViewModels
         public LoginViewModel()
         {
             this.LoginCommand = new LoginCommand(this);
+
+            WelcomeVisibility.Visibility = "Hidden";
+            LoginVisibility.Visibility = "Visible";
         }
 
 
@@ -42,13 +51,12 @@ namespace S3Eksamen.ViewModels
             var allUsers = context.Users.Where(s => s.UserName == Username && s.Password == Password).ToList();
             if(allUsers.Count != 0)
             {
-                foreach (UserModel model in allUsers)
-                {
-                    User.UserName = model.UserName;
-                    User.Password = model.Password;
-                    User.Id = model.Id;
-                }
+                User.UserName = allUsers[0].UserName;
+                User.Password = allUsers[0].Password;
+                User.Id = allUsers[0].Id;
                 CheckUser();
+                LoginVisibility.Visibility = "Hidden";
+                WelcomeVisibility.Visibility = "Visible";
             }
             else
             {
