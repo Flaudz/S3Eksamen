@@ -56,6 +56,23 @@ namespace S3Eksamen.Models
             }
         }
 
+        public void Login()
+        {
+            LoginViewModel LoginView = (LoginViewModel)App.Current.Resources["sharedLoginViewmodel"];
+            // Får context som er database connection som jeg skal bruge til at logge ind
+            using LoginContext context = new LoginContext();
+            // Her får jeg alle Brugere fra databasen som har det samme navn og adgangskode som man skrev ind og sætter ind i en liste
+            var allUsers = context.Users.Where(s => s.UserName == this.UserName && s.Password == this.Password).ToList();
+            if (allUsers.Count != 0)
+            {
+                LoginView.User.UserName = allUsers[0].UserName;
+                LoginView.User.Password = allUsers[0].Password;
+                LoginView.User.Id = allUsers[0].Id;
+                LoginView.LoginVisibility.Visibility = "Hidden";
+                LoginView.WelcomeVisibility.Visibility = "Visible";
+            }
+        }
+
         // Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
 

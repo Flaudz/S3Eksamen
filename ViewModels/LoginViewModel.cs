@@ -42,36 +42,16 @@ namespace S3Eksamen.ViewModels
             LoginVisibility.Visibility = "Visible";
         }
 
-
         public void Login(object paramater)
         {
             // Her får jeg både brugernavn og adgangskode fra button binding
             object[] data = paramater as object[];
-            string Username = data[0] as String;
-            string Password = data[1] as String;
-
-            // Får context som er database connection som jeg skal bruge til at logge ind
-            using LoginContext context = new LoginContext();
-            // Her får jeg alle Brugere fra databasen og sætter ind i en liste
-            var allUsers = context.Users.Where(s => s.UserName == Username && s.Password == Password).ToList();
-            if(allUsers.Count != 0)
-            {
-                User.UserName = allUsers[0].UserName;
-                User.Password = allUsers[0].Password;
-                User.Id = allUsers[0].Id;
-                CheckUser();
-                LoginVisibility.Visibility = "Hidden";
-                WelcomeVisibility.Visibility = "Visible";
-            }
-            else
-            {
-                Debug.WriteLine("Der var ikke en bruger som hed dette");
-            }
-        }
-
-        public void CheckUser()
-        {
-            Debug.WriteLine(User.UserName);
+            string Username = data[0] as string;
+            string Password = data[1] as string;
+            // Her laver jeg en ny bruger med det brugernavn og adgangskode som jeg skrev ind før
+            UserModel sendUser = new UserModel { UserName = Username, Password = Password };
+            // Her kalder jeg den Bruger funktion som jeg har lavet som logger brugeren ind
+            sendUser.Login();
         }
 
         public void ChangeToRegister()
