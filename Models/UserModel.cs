@@ -1,6 +1,9 @@
-﻿using System;
+﻿using S3Eksamen.Model;
+using S3Eksamen.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +39,20 @@ namespace S3Eksamen.Models
                     password = value;
                     RaisePropertyChanged("Password");
                 }
+            }
+        }
+
+        public void Register()
+        {
+            using LoginContext context = new LoginContext();
+
+            var checkUsername = context.Users.Where(s => s.UserName == this.UserName).ToList();
+            if(checkUsername.Count == 0)
+            {
+                context.Add(this);
+                context.SaveChanges();
+                RegisterViewModel RegisterView = (RegisterViewModel)App.Current.Resources["sharedRegisterViewmodel"];
+                RegisterView.ChangeVisibility();
             }
         }
 

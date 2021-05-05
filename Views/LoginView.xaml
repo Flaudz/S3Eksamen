@@ -15,7 +15,8 @@
         <TextBox x:Name="username" Text="" FontSize="30" Canvas.Left="250" Canvas.Top="183" Width="300"/>
         <TextBlock Text="Password" Canvas.Left="250" Canvas.Top="245"/>
         <TextBox x:Name="pass" Text="Password" FontSize="30" Canvas.Left="250" Canvas.Top="266" Width="300"/>
-        <Button Command="{Binding LoginCommand, Source={StaticResource sharedLoginViewmodel}}" Content="2 Paramas" Canvas.Left="383" Canvas.Top="352">
+        <Button Command="{Binding ChangeToRegisterCommand, Source={StaticResource sharedLoginViewmodel}}" Content="Register" Canvas.Left="435" Canvas.Top="321"/>
+        <Button Command="{Binding LoginCommand, Source={StaticResource sharedLoginViewmodel}}" Content="Login" Canvas.Left="317" Canvas.Top="321">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource LoginConverter}">
                     <Binding ElementName="username" Path="Text"/>
